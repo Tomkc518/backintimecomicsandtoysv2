@@ -35,30 +35,21 @@ const Home = (props) => {
           </Typography>
           <Typography
             sx={{
-              typography: { xs: "caption", sm: "body1" },
               textAlign: "center",
             }}
+            variant="body1"
             gutterBottom
           >
             With over 30 years of experience in the collecting field and 20
             years of buying, selling, &amp; trading experience. 
           </Typography>
-          <Typography
-            sx={{ typography: { xs: "caption", sm: "body1" } }}
-            gutterBottom
-          >
+          <Typography variant="body1" gutterBottom>
             Sunday 11-5, M-F 11-6, Saturday 11-7
           </Typography>
-          <Typography
-            sx={{ typography: { xs: "caption", sm: "body1" } }}
-            gutterBottom
-          >
+          <Typography variant="body1" gutterBottom>
             1170 W Kansas St Suite S, Liberty, MO 64068
           </Typography>
-          <Typography
-            sx={{ typography: { xs: "caption", sm: "body1" } }}
-            gutterBottom
-          >
+          <Typography variant="body1" gutterBottom>
             (816) 429-7004
           </Typography>
         </Grid>
