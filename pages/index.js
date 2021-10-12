@@ -3,6 +3,7 @@ import TopProducts from "../components/top-products";
 import { client } from "../utils/shopify";
 import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
 
 const Img = styled("img")({
   margin: "auto",
@@ -19,27 +20,58 @@ const Home = (props) => {
         direction="column"
         justifyContent="center"
         alignItems="center"
+        spacing={4}
       >
         <Grid item>
           <Img src="/images/logo_black.png" />
         </Grid>
-        <Grid
-          item
-          container
-          direction="column"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <h2>Welcome to Back in Time Comics and Toys</h2>
-          <p>
+        <Grid item container direction="column" alignItems="center">
+          <Typography
+            sx={{ typography: { xs: "h6", sm: "h2" } }}
+            component="div"
+            gutterBottom
+          >
+            Welcome to Back in Time Comics &amp; Toys
+          </Typography>
+          <Typography
+            sx={{
+              typography: { xs: "caption", sm: "body1" },
+              textAlign: "center",
+            }}
+            gutterBottom
+          >
             With over 30 years of experience in the collecting field and 20
             years of buying, selling, &amp; trading experience. 
-          </p>
-          <p>Sunday 11-5, M-F 11-6, Saturday 11-7</p>
-          <p>1170 W Kansas St Suite S, Liberty, MO 64068</p>
-          <p>(816) 429-7004</p>
+          </Typography>
+          <Typography
+            sx={{ typography: { xs: "caption", sm: "body1" } }}
+            gutterBottom
+          >
+            Sunday 11-5, M-F 11-6, Saturday 11-7
+          </Typography>
+          <Typography
+            sx={{ typography: { xs: "caption", sm: "body1" } }}
+            gutterBottom
+          >
+            1170 W Kansas St Suite S, Liberty, MO 64068
+          </Typography>
+          <Typography
+            sx={{ typography: { xs: "caption", sm: "body1" } }}
+            gutterBottom
+          >
+            (816) 429-7004
+          </Typography>
         </Grid>
-        <h1>Top Products</h1>
+        <Grid item>
+          <Typography
+            sx={{ typography: { xs: "h5", sm: "h3" } }}
+            component="div"
+            gutterBottom
+            mt={3}
+          >
+            Top Products
+          </Typography>
+        </Grid>
       </Grid>
       <TopProducts topProducts={props.topProducts} />
     </Layout>
