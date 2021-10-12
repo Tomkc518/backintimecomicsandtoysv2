@@ -15,7 +15,10 @@ const Products = (props) => {
       {props.products.map((product) => {
         if (product.node.availableForSale) {
           return (
-            <Card sx={{ maxWidth: 300 }} key={`${product.node.id}`}>
+            <Card
+              sx={{ maxWidth: 250, marginTop: 2 }}
+              key={`${product.node.id}`}
+            >
               <CardActionArea href={`/products/${product.node.id}`}>
                 <CardMedia
                   component="img"
