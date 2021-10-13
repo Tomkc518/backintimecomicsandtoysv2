@@ -31,7 +31,7 @@ const TagFilter = (props) => {
     setOpenDrawer(!openDrawer);
   };
 
-  const isMatch = useMediaQuery("(max-width:375px)");
+  const isMatch = useMediaQuery("(max-width:1080px)");
 
   return (
     <>

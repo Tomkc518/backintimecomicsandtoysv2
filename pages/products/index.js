@@ -168,7 +168,7 @@ const products = (props) => {
   return (
     <Layout>
       <Grid container spacing={1} justifyContent="center">
-        <Grid item xs={12} sm={2}>
+        <Grid item xs={12} lg={2}>
           <SearchFilter
             handleSearchFilter={(search) => handleSearchFilter(search)}
           />

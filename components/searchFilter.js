@@ -18,7 +18,7 @@ const SearchFilter = (props) => {
             handleChange(event);
           }
         }}
-        sx={{ ml: { xs: 2, sm: 0 } }}
+        sx={{ ml: { xs: 2, lg: 0 } }}
       />
     </form>
   );
