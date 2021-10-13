@@ -27,7 +27,7 @@ const Home = (props) => {
         </Grid>
         <Grid item container direction="column" alignItems="center">
           <Typography
-            sx={{ typography: { xs: "h4", sm: "h2" }, textAlign: "center" }}
+            sx={{ typography: { xs: "h3", sm: "h2" }, textAlign: "center" }}
             component="div"
             gutterBottom
           >
@@ -55,7 +55,7 @@ const Home = (props) => {
         </Grid>
         <Grid item>
           <Typography
-            sx={{ typography: { xs: "h5", sm: "h3" } }}
+            sx={{ typography: { xs: "h4", sm: "h3" } }}
             component="div"
             gutterBottom
             mt={3}

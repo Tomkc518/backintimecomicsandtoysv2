@@ -18,6 +18,7 @@ const SearchFilter = (props) => {
             handleChange(event);
           }
         }}
+        sx={{ ml: { xs: 2, sm: 0 } }}
       />
     </form>
   );

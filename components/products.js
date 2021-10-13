@@ -39,7 +39,18 @@ const Products = (props) => {
           );
         }
       })}
-      <Grid container xs={6} pt={3} pr={1} justifyContent="flex-end">
+      <Grid
+        container
+        item
+        xs={6}
+        sm={3}
+        md={5}
+        pt={3}
+        pr={1}
+        pb={2}
+        justifyContent="flex-end"
+        sx={{ pr: { xs: 1, md: 15, lg: 30 } }}
+      >
         {props.productsState.pageInfo.hasPreviousPage === true && (
           <Button
             variant="contained"
@@ -51,7 +62,16 @@ const Products = (props) => {
           </Button>
         )}
       </Grid>
-      <Grid container xs={6} pt={3} pl={1} justifyContent="flex-start">
+      <Grid
+        container
+        item
+        xs={4}
+        sm={3}
+        pt={3}
+        ml={1}
+        pb={2}
+        justifyContent="flex-start"
+      >
         {props.productsState.pageInfo.hasNextPage === true && (
           <Button
             variant="contained"

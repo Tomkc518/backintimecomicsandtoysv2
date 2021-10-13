@@ -4,36 +4,14 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
+import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { Typography } from "@mui/material";
 
 const TagFilter = (props) => {
-  const [tagsState, setTagsState] = useState(
-    props.tags
-    //   () => {
-    //   let listofTags = [];
-    //   props.tags.forEach(tag => {
-    //     listofTags.push({
-    //       label: tag,
-    //       checked: false
-    //     })
-    //   });
-    //   return listofTags;
-    // }
-  );
+  const [tagsState, setTagsState] = useState(props.tags);
   const [checked, setChecked] = useState([]);
   const [openDrawer, setOpenDrawer] = useState(false);
-
-  // const setupTags = () => {
-  //   let listofTags = [];
-  //   props.tags.forEach(tag => {
-  //     listofTags.push({
-  //       label: tag,
-  //       checked: false
-  //     })
-  //   });
-  //   setTagsState(listofTags);
-  // }
 
   const handleChecked = (tag) => {
     const currentIndex = checked.indexOf(tag);
@@ -51,8 +29,6 @@ const TagFilter = (props) => {
 
   const handleDrawer = () => {
     setOpenDrawer(!openDrawer);
-    setChecked([]);
-    props.handleTagFilters([]);
   };
 
   const isMatch = useMediaQuery("(max-width:375px)");
@@ -61,7 +37,13 @@ const TagFilter = (props) => {
     <>
       {isMatch ? (
         <>
-          <Drawer open={openDrawer} onClose={() => setOpenDrawer(false)}>
+          <Drawer
+            open={openDrawer}
+            onClose={() => setOpenDrawer(false)}
+            ModalProps={{
+              keepMounted: true,
+            }}
+          >
             <FormGroup>
               {tagsState.map((tag) => {
                 return (
@@ -69,13 +51,15 @@ const TagFilter = (props) => {
                     control={<Checkbox onChange={() => handleChecked(tag)} />}
                     label={tag}
                     key={tag}
+                    sx={{ ml: 1 }}
                   />
                 );
               })}
             </FormGroup>
           </Drawer>
-          <IconButton onClick={() => handleDrawer()}>
-            <MenuIcon color="success" />
+          <IconButton onClick={() => handleDrawer()} sx={{ mt: 2 }}>
+            <FilterAltIcon />
+            <Typography>Filter Products</Typography>
           </IconButton>
         </>
       ) : (

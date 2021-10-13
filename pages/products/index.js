@@ -168,7 +168,7 @@ const products = (props) => {
   return (
     <Layout>
       <Grid container spacing={1} justifyContent="center">
-        <Grid item xs={2}>
+        <Grid item xs={12} sm={2}>
           <SearchFilter
             handleSearchFilter={(search) => handleSearchFilter(search)}
           />
@@ -177,7 +177,7 @@ const products = (props) => {
             handleTagFilters={(filters) => handleTagFilters(filters)}
           />
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={9}>
           <Products
             products={productsState.edges}
             productsState={productsState}
