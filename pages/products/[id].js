@@ -1,12 +1,29 @@
 import { useState } from "react";
-import Link from "next/link";
 import Layout from "../../components/layout";
 import { client } from "../../utils/shopify";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
+import * as React from "react";
+import { useRouter } from "next/router";
+import { Button, Grid, Typography } from "@mui/material";
+import { styled } from "@mui/material/styles";
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
+const Img = styled("img")({
+  margin: "auto",
+  display: "block",
+  maxWidth: "350px",
+  maxHeight: "350px",
+});
+
+const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
 const Product = (props) => {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
 
   const handleClick = () => {
     setOpen(true);
@@ -36,36 +53,58 @@ const Product = (props) => {
     ]);
     storage.setItem("cart", JSON.stringify(cart));
     handleClick();
-    window.location.reload();
+    await delay(2000);
+    router.push("/products");
   };
 
   return (
     <Layout menu={props.menu}>
+      <Grid
+        container
+        direction="column"
+        justifyContent="center"
+        alignItems="center"
+        spacing={3}
+        sx={{ mt: 5 }}
+      >
+        <Grid item xs={6}>
+          <Img src={`${props.product.images[0].src}`}></Img>
+        </Grid>
+        <Grid item xs={6}>
+          <Typography
+            sx={{ typography: { xs: "h5", sm: "h4" }, textAlign: "center" }}
+            component="div"
+            gutterBottom
+          >
+            {props.product.title}
+          </Typography>
+        </Grid>
+        <Grid item xs={6}>
+          <Typography
+            sx={{
+              textAlign: "center",
+              typography: { xs: "body1", sm: "h6" },
+            }}
+          >
+            {props.product.description}
+          </Typography>
+        </Grid>
+        <Grid item>
+          <Button onClick={addToCart} variant="contained" size="large">
+            Add to Cart
+          </Button>
+        </Grid>
+        <Grid item>
+          <Button href="/products">Back to Shop</Button>
+        </Grid>
+      </Grid>
       <div>
-        <div key={`${props.product.id}`}>
-          <p>{props.product.title}</p>
-          <img
-            src={`${props.product.images[0].src}`}
-            className="productImage"
-          ></img>
-          <p>{props.product.description}</p>
-          <button onClick={addToCart}>Add to Cart</button>
-          <div>
-            <Link href="/products">Back</Link>
-          </div>
-        </div>
         <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
           <Alert onClose={handleClose} severity="success">
             Item Sucessfuly Added to Your Cart!
           </Alert>
         </Snackbar>
       </div>
-      <style jsx>{`
-        .productImage {
-          max-height: 350px;
-          max-width: 350px;
-        }
-      `}</style>
     </Layout>
   );
 };
@@ -75,10 +114,6 @@ export async function getServerSideProps({ query }) {
   const product = await client.product.fetch(id);
 
   return { props: { product: JSON.parse(JSON.stringify(product)) } };
-}
-
-function Alert(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
 export default Product;
