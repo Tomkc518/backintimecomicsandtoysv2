@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 import { client } from "../utils/shopify";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
+import { Typography } from "@mui/material";
+import Grid from "@mui/material/Grid";
 
 const Cart = () => {
   const router = useRouter();
@@ -77,23 +79,45 @@ const Cart = () => {
 
   const viewCart = () => {
     if (quantityState.length > 0) {
+      console.log("quantityState", quantityState);
       return (
-        <form>
-          <div>
-            {quantityState.map((lineItem, idx) => {
-              return (
-                <div key={lineItem.title} style={{ marginBottom: 30 }}>
-                  <div style={{ width: 300 }}>{`${lineItem.title}`}</div>
-                  <div>
-                    <img
-                      src={`${lineItem.img}`}
-                      height="100px"
-                      width="100px"
-                    ></img>
-                  </div>
-                  <div>
-                    <label>Quantity: </label>
-                    <input
+        <Grid
+          container
+          sx={{ width: 300 }}
+          justifyContent="center"
+          direction="column"
+          alignItems="center"
+        >
+          {quantityState.map((lineItem, idx) => {
+            return (
+              <Grid
+                container
+                item
+                key={lineItem.title}
+                justifyContent="center"
+                direction="column"
+                alignItems="center"
+                sx={{ mt: 3 }}
+              >
+                <Grid item>
+                  <Typography
+                    sx={{
+                      textAlign: "center",
+                    }}
+                  >{`${lineItem.title}`}</Typography>
+                </Grid>
+                <Grid item>
+                  <img
+                    src={`${lineItem.img}`}
+                    height="100px"
+                    width="100px"
+                  ></img>
+                </Grid>
+                <Grid item>
+                  <Typography>Quantity: {lineItem.qty}</Typography>
+                </Grid>
+
+                {/* <input
                       id={`${lineItem.id}`}
                       name={`${lineItem.id}`}
                       type="number"
@@ -101,24 +125,28 @@ const Cart = () => {
                       data-idx={idx}
                       onChange={cartQuantityOnChange}
                       className="qty"
-                    />
-                  </div>
-                  <div>
-                    {`SubTotal Price: $${lineItem.price * lineItem.qty} `}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-          <br></br>
-          <button onClick={updateCartQuantities}>Update Quantities</button>
-          <br></br>
-          <button onClick={checkout}>Checkout</button>
-        </form>
+                    /> */}
+                <Grid item>
+                  <Typography>
+                    {`SubTotal Price: $${Number(
+                      lineItem.price * lineItem.qty
+                    ).toFixed(2)}`}
+                  </Typography>
+                </Grid>
+              </Grid>
+            );
+          })}
+          {/* <button onClick={updateCartQuantities}>Update Quantities</button> */}
+          <Grid item sx={{ mt: 3 }}>
+            <Button onClick={checkout} variant="contained">
+              Checkout
+            </Button>
+          </Grid>
+        </Grid>
       );
     }
 
-    return <div>please add an item to your cart</div>;
+    return <Typography>Your Cart is Empty</Typography>;
   };
 
   return (

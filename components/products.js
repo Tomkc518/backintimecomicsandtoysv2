@@ -31,7 +31,10 @@ const Products = (props) => {
                     {product.node.title}
                   </Typography>
                   <Typography>
-                    ${product.node.variants.edges[0].node.priceV2.amount}
+                    $
+                    {Number(
+                      product.node.variants.edges[0].node.priceV2.amount
+                    ).toFixed(2)}
                   </Typography>
                 </CardContent>
               </CardActionArea>
