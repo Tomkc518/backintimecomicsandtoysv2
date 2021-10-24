@@ -95,7 +95,9 @@ const Product = (props) => {
           </Button>
         </Grid>
         <Grid item>
-          <Button href="/products">Back to Shop</Button>
+          <Button href="/products" sx={{ mb: 3 }}>
+            Back to Shop
+          </Button>
         </Grid>
       </Grid>
       <div>
