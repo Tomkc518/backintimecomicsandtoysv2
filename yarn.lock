@@ -3108,9 +3108,9 @@ shell-quote@1.7.2:
   integrity sha512-mRz/m/JVscCrkMyPqHc/bczi3OQHkLTqXHEFu0zDhK/qfv3UcOA4SVmRCLmos4bhjr9ekVQubj/R7waKapmiQg==
 
 shopify-buy@^2.12.0:
-  version "2.12.0"
-  resolved "https://registry.yarnpkg.com/shopify-buy/-/shopify-buy-2.12.0.tgz#d10609e291d41d537bb29cff73c604d14c117692"
-  integrity sha512-L0fo8fBDO31v9dAlVmLlIuJQnfwexGvceJ+A8hhIpovvfGh4GVGDId3k9PCWOqSzVHQBvYLdeGccxqjAOlbRlg==
+  version "2.14.0"
+  resolved "https://registry.yarnpkg.com/shopify-buy/-/shopify-buy-2.14.0.tgz#b4a35cb7e83518f44476ff3e3b5530cf86a24ddb"
+  integrity sha512-ehQMBQzkmm837boIUb85umpWg25EYzgDTqSv1dLabTmfTQSlhTkBJ0r1mDZnZpEoYpWbAs6cSSa5C9/NIaSSOQ==
 
 side-channel@^1.0.4:
   version "1.0.4"

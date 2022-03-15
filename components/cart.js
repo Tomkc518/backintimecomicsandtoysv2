@@ -79,7 +79,6 @@ const Cart = () => {
 
   const viewCart = () => {
     if (quantityState.length > 0) {
-      console.log("quantityState", quantityState);
       return (
         <Grid
           container

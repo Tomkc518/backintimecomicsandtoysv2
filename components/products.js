@@ -23,7 +23,7 @@ const Products = (props) => {
                 <CardMedia
                   component="img"
                   height="250"
-                  image={`${product.node.variants.edges[0].node.image.originalSrc}`}
+                  image={`${product.node.variants.edges[0].node.image.url}`}
                   title={product.node.title}
                 />
                 <CardContent>
@@ -35,6 +35,9 @@ const Products = (props) => {
                     {Number(
                       product.node.variants.edges[0].node.priceV2.amount
                     ).toFixed(2)}
+                  </Typography>
+                  <Typography>
+                    Inventory: {product.node.totalInventory}
                   </Typography>
                 </CardContent>
               </CardActionArea>

@@ -31,7 +31,7 @@ const products = (props) => {
               { args: { first: 10 } },
               (variant) => {
                 variant.add("image", (image) => {
-                  image.add("originalSrc");
+                  image.add("url");
                 });
                 variant.add("priceV2", (price) => {
                   price.add("amount");
@@ -68,7 +68,7 @@ const products = (props) => {
             { args: { first: 10 } },
             (variant) => {
               variant.add("image", (image) => {
-                image.add("originalSrc");
+                image.add("url");
               });
               variant.add("priceV2", (price) => {
                 price.add("amount");
@@ -84,7 +84,6 @@ const products = (props) => {
       .then(({ model, data }) => {
         return JSON.parse(JSON.stringify(data.products));
       });
-    console.log("searchfilter is called");
     setProductsState(searchedData);
   };
 
@@ -109,7 +108,7 @@ const products = (props) => {
             { args: { first: 10 } },
             (variant) => {
               variant.add("image", (image) => {
-                image.add("originalSrc");
+                image.add("url");
               });
               variant.add("priceV2", (price) => {
                 price.add("amount");
@@ -144,7 +143,7 @@ const products = (props) => {
             { args: { first: 10 } },
             (variant) => {
               variant.add("image", (image) => {
-                image.add("originalSrc");
+                image.add("url");
               });
               variant.add("priceV2", (price) => {
                 price.add("amount");
@@ -196,9 +195,13 @@ export async function getServerSideProps() {
       product.add("title");
       product.add("availableForSale");
       product.add("description");
+      product.add("totalInventory");
+      product.addConnection("images", { args: { first: 10 } }, (image) => {
+        image.add("url");
+      });
       product.addConnection("variants", { args: { first: 10 } }, (variant) => {
         variant.add("image", (image) => {
-          image.add("originalSrc");
+          image.add("url");
         });
         variant.add("priceV2", (price) => {
           price.add("amount");
