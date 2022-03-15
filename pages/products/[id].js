@@ -22,7 +22,6 @@ const Img = styled("img")({
 const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
 const Product = (props) => {
-  console.log("productinfo", props.product);
   const [open, setOpen] = useState(false);
   const router = useRouter();
 
@@ -68,9 +67,6 @@ const Product = (props) => {
         spacing={3}
         sx={{ mt: 5 }}
       >
-        <Grid item xs={6}>
-          <Img src={`${props.product.images[0].src}`}></Img>
-        </Grid>
         <Grid item xs={6}>
           {props.product.images.map((image) => {
             return <Img src={image.src}></Img>;

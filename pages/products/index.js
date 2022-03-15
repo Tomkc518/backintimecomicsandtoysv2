@@ -26,6 +26,7 @@ const products = (props) => {
             product.add("title");
             product.add("availableForSale");
             product.add("description");
+            product.add("totalInventory");
             product.addConnection(
               "variants",
               { args: { first: 10 } },
@@ -63,6 +64,7 @@ const products = (props) => {
           product.add("title");
           product.add("availableForSale");
           product.add("description");
+          product.add("totalInventory");
           product.addConnection(
             "variants",
             { args: { first: 10 } },
@@ -103,6 +105,7 @@ const products = (props) => {
           product.add("title");
           product.add("availableForSale");
           product.add("description");
+          product.add("totalInventory");
           product.addConnection(
             "variants",
             { args: { first: 10 } },
@@ -138,6 +141,7 @@ const products = (props) => {
           product.add("title");
           product.add("availableForSale");
           product.add("description");
+          product.add("totalInventory");
           product.addConnection(
             "variants",
             { args: { first: 10 } },
